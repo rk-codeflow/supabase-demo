@@ -1,7 +1,6 @@
 import React from "react";
 
 const Card = ({ smoothie }) => {
-  console.log("Card details =>>>", smoothie);
   return (
     <div className="smoothie-card">
       <h3>{smoothie.title}</h3>

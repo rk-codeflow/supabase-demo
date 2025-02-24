@@ -22,7 +22,6 @@ const Home = () => {
 
       if (data) {
         setSmoothies(data);
-        console.log(data);
       }
       setIsLoading(false);
     };
