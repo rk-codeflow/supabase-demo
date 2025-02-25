@@ -47,7 +47,6 @@ const Create = () => {
       console.log("Redirecting to home page...");
       navigate("/");
     } catch (error) {
-      console.error("Unexpected error:", err);
       setFormError("An unexpected error occurred. Please try again.");
     }
   };
