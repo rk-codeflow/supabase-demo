@@ -25,25 +25,30 @@ const Create = () => {
 
     console.log("Submitting form data:", formData);
 
-    let { data, error } = await supabase.from("supabase").insert([
-      {
-        title: formData.title,
-        method: formData.method,
-        rating: formData.rating,
-      },
-    ]);
+    try {
+      let { data, error } = await supabase.from("supabase").insert([
+        {
+          title: formData.title,
+          method: formData.method,
+          rating: formData.rating,
+        },
+      ]);
 
-    if (error) {
-      console.log("Supabase error:", error);
-      setFormError(error.message);
-      return;
-    }
+      if (error) {
+        console.log("Supabase error:", error);
+        setFormError(error.message);
+        return;
+      }
 
-    if (data) {
       console.log("Supabase data:", data);
       setFormError(null);
+
+      // Redirect to home page after successful insertion
       console.log("Redirecting to home page...");
       navigate("/");
+    } catch (error) {
+      console.error("Unexpected error:", err);
+      setFormError("An unexpected error occurred. Please try again.");
     }
   };
 
