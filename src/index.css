@@ -64,9 +64,10 @@ nav h1 {
   text-align: center;
 }
 .smoothie-card .buttons {
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
 }
-.smoothie-card span {
+.smoothie-card svg {
   color: #bbb;
   margin-left: 10px;
   font-size: 1.2em;

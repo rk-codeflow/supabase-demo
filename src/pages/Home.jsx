@@ -29,6 +29,11 @@ const Home = () => {
     fetchSmoothies();
   }, []);
 
+  const handleDelete = (id) => {
+    const newSmoothies = smoothies.filter((smoothie) => smoothie.id !== id);
+    setSmoothies(newSmoothies);
+  };
+
   return (
     <>
       <div className="page home">
@@ -37,7 +42,11 @@ const Home = () => {
         <div className="smoothies">
           <div className="smoothie-grid">
             {smoothies.map((smoothie) => (
-              <Card key={smoothie.id} smoothie={smoothie} />
+              <Card
+                key={smoothie.id}
+                smoothie={smoothie}
+                onDelete={handleDelete}
+              />
             ))}
           </div>
         </div>

@@ -17,13 +17,10 @@ const Update = () => {
         .eq("id", id)
         .single();
 
-      console.log(data);
-
       if (error) {
         console.log(error);
       } else {
         setFormData(data);
-        console.log("Data in else block:", data);
       }
     };
 
