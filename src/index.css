@@ -76,6 +76,21 @@ nav h1 {
   border-radius: 50%;
   cursor: pointer;
 }
+button {
+  cursor: pointer;
+}
+.auth-btn {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  min-width: 100px;
+}
 
 /* forms */
 form {
