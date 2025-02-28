@@ -25,10 +25,14 @@ const Signup = () => {
   }, []);
 
   const signIn = async () => {
+    const redirectTo =
+      process.env.VITE_SUPABASE_REDIRECT_URL ||
+      window.location.origin + "/signup";
+
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "github",
       options: {
-        redirectTo: window.location.origin + "/signup",
+        redirectTo,
       },
     });
 
