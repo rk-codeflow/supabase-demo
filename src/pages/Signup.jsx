@@ -25,9 +25,11 @@ const Signup = () => {
   }, []);
 
   const signIn = async () => {
-    const redirectTo =
-      process.env.VITE_SUPABASE_REDIRECT_URL ||
-      window.location.origin + "/signup";
+    const redirectTo = import.meta.env.DEV
+      ? "http://localhost:5173/signup" // Localhost for development
+      : window.location.origin + "/signup";
+
+    console.log("Redirecting to:", redirectTo);
 
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "github",
