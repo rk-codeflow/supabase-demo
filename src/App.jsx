@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Create from "./pages/Create";
 import Update from "./pages/Update";
 import Signup from "./pages/Signup";
+import Email from "./pages/Email";
 
 function App() {
   return (
@@ -12,13 +13,15 @@ function App() {
         <h1>Supa smoothies</h1>
         <Link to="/">Home</Link>
         <Link to="/create">Create New Smoothie</Link>
-        <Link to="/signup">Signup</Link>
+        <Link to="/signup">Github Signup</Link>
+        <Link to="/email">Email Signup</Link>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/create" element={<Create />} />
         <Route path="/:id" element={<Update />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/email" element={<Email />} />
       </Routes>
     </BrowserRouter>
   );
