@@ -4,7 +4,8 @@ import Home from "./pages/Home";
 import Create from "./pages/Create";
 import Update from "./pages/Update";
 import Signup from "./pages/Signup";
-import Email from "./pages/Email";
+import Login from "./pages/authComp/Login";
+import Email from "./pages/authComp/Email";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/:id" element={<Update />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/email" element={<Email />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

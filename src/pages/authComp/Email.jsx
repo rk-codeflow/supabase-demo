@@ -1,6 +1,6 @@
 import React, { use, useState } from "react";
-import supabase from "../config/supabaseClient";
-import { Navigate } from "react-router-dom";
+import supabase from "../../config/supabaseClient";
+import { useNavigate } from "react-router-dom";
 
 const Email = () => {
   const navigate = useNavigate();
@@ -8,7 +8,6 @@ const Email = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isSuccess, setIsSuccess] = useState(false);
   const [inputError, setInputError] = useState("");
 
   const handleChange = (e) => {
@@ -35,22 +34,26 @@ const Email = () => {
         name: name,
         email: email,
         password: password,
-        options: {
-          emailRedirectTo: "http://localhost:5173/email",
-        },
+        // options: {
+        //   emailRedirectTo: "http://localhost:5173/email",
+        // },
       });
 
       if (error) {
-        console.log("Error during sign up: ", error);
+        setInputError(error.message || "An error occurred during sign-up");
+        return;
       }
 
       if (data) {
         console.log("Sign-up successful. Data:", data);
         console.log("Confirmation email sent to:", email);
-        setInputError(null);
+        console.log("Name =>", name);
+        setInputError("");
+        navigate("/login");
       }
     } catch (err) {
       console.log("unexpected error: ", err);
+      setInputError("Something went wrong. Please try again later.");
     }
   };
 
@@ -84,7 +87,9 @@ const Email = () => {
         <button type="submit">Sign Up</button>
       </form>
 
-      {inputError && <p style={{ textAlign: "center" }}>{inputError}</p>}
+      {inputError && (
+        <p style={{ textAlign: "center", color: "red" }}>{inputError}</p>
+      )}
     </div>
   );
 };
